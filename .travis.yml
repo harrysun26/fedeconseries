@@ -12,3 +12,14 @@ r:
   - 3.6
   - release
   - devel
+
+after_success:
+    - Rscript -e 'covr::codecov(type = "all")'
+
+r_packages:
+  - covr
+
+after_success:
+  - Rscript -e 'library(covr); codecov()'
+
+

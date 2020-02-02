@@ -13,9 +13,9 @@ URL: https://github.com/harrysun26/fedeconseries
 BugReports: https://github.com/harrysun26/fedeconseries/issues
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 VignetteBuilder: knitr
 Imports: 
     tibble
-
     
