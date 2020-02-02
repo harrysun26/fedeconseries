@@ -18,4 +18,10 @@ Suggests:
     testthat
 VignetteBuilder: knitr
 Imports: 
-    tibble
+    tibble,
+    tidyr,
+    dplyr,
+    lubridate,
+    magrittr,
+    stats,
+    jsonlite
