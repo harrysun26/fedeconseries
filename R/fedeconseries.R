@@ -18,7 +18,6 @@
 #' @usage get_fedeconseries(s_id, s_name = NULL,obs_start = NULL, obs_end = NULL,real_start = NULL, real_end = NULL)
 #'
 #'
-#'
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr gather_
 #' @importFrom dplyr mutate_

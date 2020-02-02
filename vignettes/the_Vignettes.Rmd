@@ -1,5 +1,6 @@
 ---
 title: "th Vignettes of fedeconseries"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{the_Vignettes}
@@ -7,13 +8,68 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+An easy way to download ALFRED data (US Frderal Reserve Economic data).
 
-```{r setup}
-library(fedeconseries)
-```
+## Installation
+
+You may install the last stable release via CRAN or the latest development version from github.
+
+
+<!-- ```{r} -->
+<!-- install.packages("fedeconseries") -->
+<!-- # or -->
+<!-- install.packages("devtools") -->
+<!-- devtools::install_github("harrysun26/fedeconseries") -->
+
+<!-- ``` -->
+
+<!-- ## Usage -->
+
+<!-- Downloading data is straightforward (for real-time data from ALFRED see below): -->
+
+
+
+<!-- ```{r} -->
+<!-- library(fedeconseries) -->
+<!-- df <- get_fedeconseries("INDPRO", "indpro") -->
+<!-- ``` -->
+
+<!-- The output is a data frame -->
+
+<!-- ```{r} -->
+<!-- head(df) -->
+<!-- ``` -->
+
+<!-- This can be readily used, i.e. for plotting -->
+
+<!-- ```{r, fig.show = "hold"} -->
+<!-- library(ggplot2) -->
+<!-- ggplot(df) + -->
+<!--   geom_line(aes(x = date, y = indpro)) -->
+<!-- ``` -->
+
+<!-- ## Vintage data -->
+
+<!-- When using get_fedeconseries for downloading real-time data sets, there will be an additional column for the respective vintage dates. -->
+
+<!-- ```{r} -->
+<!-- df_vintages <- -->
+<!--   get_fedeconseries("GDPC1", "rgdp", -->
+<!--                     obs_start = "2007-05-31", -->
+<!--                     real_start = "2008-05-31", real_end = "2009-03-30") -->
+<!-- head(df_vintages) -->
+<!-- ``` -->
+
+<!-- Because of its output being a tidy data frame, it is easy to visualise revisions by -->
+
+<!-- ```{r, fig.show = "hold", fig.width = 6} -->
+<!-- library(ggplot2) -->
+
+<!-- ggplot(df_vintages) + -->
+<!--   geom_line(aes(x = date, y = rgdp, colour = as.factor(realtime_period))) + -->
+<!--   theme_bw() + -->
+<!--   theme( -->
+<!--     legend.title = element_blank(), -->
+<!--     legend.position = "bottom" -->
+<!--   ) -->
+<!-- ``` -->
