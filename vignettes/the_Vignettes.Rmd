@@ -1,0 +1,19 @@
+---
+title: "th Vignettes of fedeconseries"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{the_Vignettes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(fedeconseries)
+```
