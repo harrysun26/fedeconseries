@@ -14,8 +14,8 @@ BugReports: https://github.com/harrysun26/fedeconseries/issues
 Suggests: 
     knitr,
     rmarkdown,
-    covr
+    covr,
+    testthat
 VignetteBuilder: knitr
 Imports: 
     tibble
-    
