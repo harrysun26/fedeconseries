@@ -89,8 +89,6 @@ get_fedeconseries <-
         df_series <-
           fromJSON(link)$observations
 
-        print("AAA")
-
         df_series %>%
           mutate_(date = ~as_date(df_series[["date"]])) %>%
           gather_("realtime_period", "name", setdiff(names(df_series), "date")) %>%
