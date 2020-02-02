@@ -53,3 +53,48 @@ library(fedeconseries)
 ## basic example code
 ```
 
+
+```{r}
+library(fedeconseries)
+df <- get_fred_series2("INDPRO", "indpro")
+```
+
+The output is a data frame
+
+```{r}
+head(df)
+```
+
+This can be readily used, i.e. for plotting
+
+```{r, fig.show = "hold"}
+library(ggplot2)
+ggplot(df) +
+  geom_line(aes(x = date, y = indpro))
+```
+
+## Vintage data
+
+When using get_fedeconseries for downloading real-time data sets, there will be an additional column for the respective vintage dates.
+
+```{r}
+df_vintages <-
+  get_fedeconseries("GDPC1", "rgdp",
+                    obs_start = "2007-05-31",
+                    real_start = "2008-05-31", real_end = "2009-03-30")
+head(df_vintages)
+```
+
+Because of its output being a tidy data frame, it is easy to visualise revisions by
+
+```{r, fig.show = "hold", fig.width = 6}
+library(ggplot2)
+
+ggplot(df_vintages) +
+  geom_line(aes(x = date, y = rgdp, colour = as.factor(realtime_period))) +
+  theme_bw() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "bottom"
+  )
+```
