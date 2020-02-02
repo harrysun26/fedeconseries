@@ -26,4 +26,4 @@ Imports:
     magrittr,
     stats,
     jsonlite
-Depends: R (>= 3.5.0)
+Depends: R (>= 3.6)
