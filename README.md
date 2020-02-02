@@ -7,6 +7,8 @@
 
 [![Travis build
 status](https://travis-ci.org/harrysun26/fedeconseries.svg?branch=master)](https://travis-ci.org/harrysun26/fedeconseries)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/harrysun26/fedeconseries?branch=master&svg=true)](https://ci.appveyor.com/project/harrysun26/fedeconseries)
 <!-- badges: end -->
 
 The goal of fedeconseries is to obtain US federal reserve economc data.
