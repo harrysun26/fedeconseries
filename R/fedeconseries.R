@@ -1,4 +1,3 @@
-
 #' US federal reserve economic data series accessing
 #' This wrapper function is to access data from  \url{https://alfred.stlouisfed.org}.
 #'
@@ -16,9 +15,9 @@
 #' @keywords alfred; US federal reserve
 #' @export get_fedeconseries
 #'
-#' @usage get_fedeconseries(s_id, s_name = NULL,
-#'     obs_start = NULL, obs_end = NULL,
-#'     real_start = NULL, real_end = NULL)
+#' @usage get_fedeconseries(s_id, s_name = NULL,obs_start = NULL, obs_end = NULL,real_start = NULL, real_end = NULL)
+#'
+#'
 #'
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr gather_
@@ -30,6 +29,7 @@
 #' @importFrom dplyr bind_rows
 #' @importFrom stats na.omit
 #' @importFrom jsonlite fromJSON
+#'
 #' @examples \dontrun{
 #'     get_fedeconseries("INDPRO", "indpro")
 #'     }
@@ -54,40 +54,41 @@ get_fedeconseries <-
     }
 
     if (is.null(real_start)  == TRUE) {
-      real_start <- "1900-01-01"
+      real_start <- "1776-07-04"
 
     }
 
     if (is.null(real_end) == TRUE) {
-      real_end <- "2099-12-31"
+      real_end <- "9999-12-31"
 
     }
 
     if (is.null(obs_start) == TRUE) {
-      obs_start <- "1900-01-01"
+      obs_start <- "1776-07-04"
 
     }
 
     if (is.null(obs_end) == TRUE) {
-      obs_end <- "2099-12-31"
+      obs_end <- "9999-12-31"
     }
+
+    link=paste0("https://api.stlouisfed.org/fred/series/observations?series_id=",
+                s_id,
+                "&realtime_start=",
+                real_start,
+                "&realtime_end=",
+                real_end,
+                "&output_type=2&observation_start=",
+                obs_start,
+                "&observation_end=",
+                obs_end,
+                "&api_key=98f9f5cad7212e246dc5955e9b744b24&file_type=json")
 
     df_series <-
       try({
         df_series <-
-          fromJSON(
-            paste0("https://api.stlouisfed.org/fred/series/observations?series_id=",
-                   s_id,
-                   "&realtime_start=",
-                   real_start,
-                   "&realtime_end=",
-                   real_end,
-                   "&output_type=2&observation_start=",
-                   obs_start,
-                   "&observation_end=",
-                   obs_end,
-                   "&api_key=98f9f5cad7212e246dc5955e9b744b24&file_type=json")
-          )$observations
+          fromJSON(link)$observations
+
         print("AAA")
 
         df_series %>%
@@ -102,7 +103,7 @@ get_fedeconseries <-
           mutate_(realtime_period = ~as_date(realtime_period),
                   date = ~as_date(date),
                   name = ~as.numeric(name)) %>%
-          filter_(.dots = paste0("realtime_period", "!= ", "2099-12-31"))
+          dplyr::filter_(.dots = paste0("realtime_period", "!= ", "2099-12-31"))
       }, silent = TRUE)
 
     if (class(df_series) == "try-error") {

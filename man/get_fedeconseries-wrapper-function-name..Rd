@@ -6,9 +6,7 @@
 \title{US federal reserve economic data series accessing
 This wrapper function is to access data from  \url{https://alfred.stlouisfed.org}.}
 \usage{
-get_fedeconseries(s_id, s_name = NULL,
-    obs_start = NULL, obs_end = NULL,
-    real_start = NULL, real_end = NULL)
+get_fedeconseries(s_id, s_name = NULL,obs_start = NULL, obs_end = NULL,real_start = NULL, real_end = NULL)
 }
 \arguments{
 \item{s_id}{econimic variable names provided by ALFRED, unique identifier.}
