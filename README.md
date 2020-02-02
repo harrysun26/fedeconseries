@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/harrysun26/fedeconseries.svg?branch=master)](https://travis-ci.org/harrysun26/fedeconseries)
 <!-- badges: end -->
 
 The goal of fedeconseries is to obtain US federal reserve economc data.
