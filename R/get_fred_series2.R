@@ -7,7 +7,9 @@
 #' @param observation_start Choose a name for the series column in output. Default: series_id.
 #' @param observation_end Date of last observation in "yyyy-mm-dd" format. Default: Last observation available.
 #'
-#' @usage get_fred_series2(series_id, series_name = NULL,observation_start = NULL, observation_end = NULL)
+#' @usage get_fred_series2(series_id,
+#' series_name = NULL,observation_start = NULL,
+#'  observation_end = NULL)
 #' @export get_fred_series2
 #'
 #' @importFrom tibble as_tibble

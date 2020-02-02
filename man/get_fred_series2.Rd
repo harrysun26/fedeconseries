@@ -5,7 +5,9 @@
 \title{Accessing FRED
 This function can pull time series from the FRED database: \url{https://fred.stlouisfed.org}}
 \usage{
-get_fred_series2(series_id, series_name = NULL,observation_start = NULL, observation_end = NULL)
+get_fred_series2(series_id,
+series_name = NULL,observation_start = NULL,
+ observation_end = NULL)
 }
 \arguments{
 \item{series_id}{FRED times series ID.}
