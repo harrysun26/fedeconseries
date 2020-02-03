@@ -87,8 +87,37 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of fedeconseries from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"fedeconseries"</span>)</a></code></pre></div>
+<p>You can install the released version of fedeconseries from github with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">#Ordinary: install.packages("fedeconseries") OR(if not working:)</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(devtools)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">install_github</span>(<span class="st">"harrysun26/fedeconseries"</span>)</a></code></pre></div>
+</div>
+<div id="usage" class="section level2">
+<h2 class="hasAnchor">
+<a href="#usage" class="anchor"></a>Usage</h2>
+<p>A more detailed example can be found in my vignette: <a href="https://harrysun26.github.io/fedeconseries/index.html" class="uri">https://harrysun26.github.io/fedeconseries/index.html</a></p>
+</div>
+<div id="functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#functions" class="anchor"></a>Functions:</h2>
+<p>get_fedeconseries(“INDPRO”, “test”, observation_start = “2013-03-01”, observation_end = “2013-03-30”, realtime_start = “2015-02-02”, realtime_end = “2015-02-02”)</p>
+<p>This function looks up industrial production data of US.</p>
+<p>Note: this function returns data that is adjusted by ALFRED, with methods such as seasonal adjustment for time series.</p>
+<p>Wrapper for getting only most recent releases</p>
+<p>get_fred_series2(“INDPRO”, “indpro”, observation_start = “2009-03-01”, observation_end = “2009-03-01”)</p>
+<p>Function above returns real value(raw data) of economic series. Not adjusted.</p>
+<div id="terms-of-use" class="section level3">
+<h3 class="hasAnchor">
+<a href="#terms-of-use" class="anchor"></a>Terms of use</h3>
+<p>When using the FRED© API, you are agreeing to be bound by the FRED© API Terms of Use, see <a href="https://research.stlouisfed.org/docs/api/terms_of_use.html" class="uri">https://research.stlouisfed.org/docs/api/terms_of_use.html</a>.</p>
+</div>
+</div>
+<div id="history" class="section level2">
+<h2 class="hasAnchor">
+<a href="#history" class="anchor"></a>History</h2>
+<ul>
+<li>02.02.2020: Version 1.0 release</li>
+</ul>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -96,19 +125,50 @@
 <p>This is a basic example which shows you how to solve a common problem:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(fedeconseries)</a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co">## basic example code</span></a></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(cars)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt;      speed           dist       </span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></a></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date.</p>
-<p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub!</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(fedeconseries)</a>
+<a class="sourceLine" id="cb3-2" title="2">df &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_fred_series2.html">get_fred_series2</a></span>(<span class="st">"INDPRO"</span>, <span class="st">"indpro"</span>)</a></code></pre></div>
+<p>The output is a data frame</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(df)</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt;         date indpro</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt; 1 1919-01-01 5.0124</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt; 2 1919-02-01 4.7908</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt; 3 1919-03-01 4.6524</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; 4 1919-04-01 4.7355</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt; 5 1919-05-01 4.7632</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt; 6 1919-06-01 5.0678</span></a></code></pre></div>
+<p>This can be readily used, i.e. for plotting</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">ggplot</span>(df) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> indpro))</a></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
+</div>
+<div id="vintage-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#vintage-data" class="anchor"></a>Vintage data</h2>
+<p>When using get_fedeconseries for downloading real-time data sets, there will be an additional column for the respective vintage dates.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">df_vintages &lt;-</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw"><a href="reference/get_fedeconseries.html">get_fedeconseries</a></span>(<span class="st">"GDPC1"</span>, <span class="st">"rgdp"</span>,</a>
+<a class="sourceLine" id="cb6-3" title="3">                    <span class="dt">obs_start =</span> <span class="st">"2007-05-31"</span>,</a>
+<a class="sourceLine" id="cb6-4" title="4">                    <span class="dt">real_start =</span> <span class="st">"2008-05-31"</span>, <span class="dt">real_end =</span> <span class="st">"2009-03-30"</span>)</a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(df_vintages)</a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt;         date realtime_period    rgdp</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; 1 2007-07-01      2008-05-31 11658.9</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; 2 2007-10-01      2008-05-31 11675.7</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt; 3 2008-01-01      2008-05-31 11701.9</span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt; 4 2007-07-01      2008-06-26 11658.9</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt; 5 2007-10-01      2008-06-26 11675.7</span></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="co">#&gt; 6 2008-01-01      2008-06-26 11703.6</span></a></code></pre></div>
+<p>Because of its output being a tidy data frame, it is easy to visualise revisions by</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb7-2" title="2"></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw">ggplot</span>(df_vintages) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> rgdp, <span class="dt">colour =</span> <span class="kw"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span>(realtime_period))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="st">  </span><span class="kw">theme</span>(</a>
+<a class="sourceLine" id="cb7-7" title="7">    <span class="dt">legend.title =</span> <span class="kw">element_blank</span>(),</a>
+<a class="sourceLine" id="cb7-8" title="8">    <span class="dt">legend.position =</span> <span class="st">"bottom"</span></a>
+<a class="sourceLine" id="cb7-9" title="9">  )</a></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
 </div>
 </div>
   </div>
@@ -126,7 +186,8 @@
 <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
 <div class="developers">
@@ -142,6 +203,7 @@
 <li><a href="https://travis-ci.org/harrysun26/fedeconseries"><img src="https://travis-ci.org/harrysun26/fedeconseries.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://ci.appveyor.com/project/harrysun26/fedeconseries"><img src="https://ci.appveyor.com/api/projects/status/github/harrysun26/fedeconseries?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://codecov.io/gh/harrysun26/fedeconseries?branch=master"><img src="https://codecov.io/gh/harrysun26/fedeconseries/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></li>
 </ul>
 </div>
 </div>
