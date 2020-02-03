@@ -1,5 +1,5 @@
 ---
-title: "th Vignettes of fedeconseries"
+title: "the Vignettes of fedeconseries"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -25,7 +25,19 @@ You may install the last stable release , the latest development version from gi
 
 ## Usage
 
-Downloading data is straightforward (for real-time data from ALFRED see below):
+First, when use this package to fetch data from \url{https://alfred.stlouisfed.org}, you need to know the `s_id` which is the data identifier. If you don't know the series_id, you could try `search_fedeconseries` to search some keywords. Say you want to know the Industrial Production Index, but you do not the series identifier to fetch data. Here is whay you could do:
+
+```{r}
+library(fedeconseries)
+df <- search_fedeconseries("Industrial+Production+Index")
+##for display purpose, I omited the 16th column, since it contains long notes.
+head(df[,-16])
+```
+
+From the above dataframe, you could check the title, the frequency, the popularity, the notes, etc., then you could easily choose which one is what you need.
+
+
+Assume you have choosed 'INDPRO',next step,downloading data is straightforward (for real-time data from ALFRED see below):
 
 
 ```{r}
