@@ -11,6 +11,8 @@ status](https://travis-ci.org/harrysun26/fedeconseries.svg?branch=master)](https
 status](https://ci.appveyor.com/api/projects/status/github/harrysun26/fedeconseries?branch=master&svg=true)](https://ci.appveyor.com/project/harrysun26/fedeconseries)
 [![Codecov test
 coverage](https://codecov.io/gh/harrysun26/fedeconseries/branch/master/graph/badge.svg)](https://codecov.io/gh/harrysun26/fedeconseries?branch=master)
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
 The goal of fedeconseries is to obtain US federal reserve economc data.
