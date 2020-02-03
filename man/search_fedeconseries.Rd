@@ -18,7 +18,7 @@ One of the following strings: 'full_text', 'series_id'.}
 \item{realtime_end}{Date of last real time period in "yyyy-mm-dd" format, default: today's date.}
 }
 \value{
-dataframe
+return dataframe
 }
 \description{
 Get US federal reserve economic data series that match keywords
