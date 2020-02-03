@@ -13,9 +13,9 @@ search_fedeconseries(search_text, search_type = 'full_text',
 \item{search_type}{Determines the type of search to perform.
 One of the following strings: 'full_text', 'series_id'.}
 
-\item{realtime_start}{Date of first real time period in "yyyy-mm-dd" format..}
+\item{realtime_start}{Date of first real time period in "yyyy-mm-dd" format, default: today's date.}
 
-\item{realtime_end}{Date of last real time period in "yyyy-mm-dd" format.}
+\item{realtime_end}{Date of last real time period in "yyyy-mm-dd" format, default: today's date.}
 }
 \value{
 dataframe

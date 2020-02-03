@@ -9,11 +9,11 @@
 #' @param search_text The words to match against economic data series.
 #' @param search_type Determines the type of search to perform.
 #'              One of the following strings: 'full_text', 'series_id'.
-#' @param realtime_start Date of first real time period in "yyyy-mm-dd" format..
-#' @param realtime_end Date of last real time period in "yyyy-mm-dd" format.
+#' @param realtime_start Date of first real time period in "yyyy-mm-dd" format, default: today's date.
+#' @param realtime_end Date of last real time period in "yyyy-mm-dd" format, default: today's date.
 #' @note  More arguments could be added into function, for additional arguments, check
 #'                  \url{https://research.stlouisfed.org/docs/api/fred/series_search.html}
-#' @return dataframe
+#' @return return dataframe
 #' @export search_fedeconseries
 #' @importFrom jsonlite fromJSON
 #' @usage search_fedeconseries(search_text, search_type = 'full_text',

@@ -2,7 +2,7 @@ Package: fedeconseries
 Type: Package
 Title: Federal Reserve Econnomic Series Data 
 Version: 0.1.0
-Author: Harry Sun <clickrite@126.com>
+Author: Harry Sun <clickrite@126.com> Weiwei Liu <373995313@qq.com>
 Maintainer: Harry Sun <clickrite@126.com>
 Description: To obtain US federal reserve economc data.  Reserach use only.
 License: MIT + file LICENSE
