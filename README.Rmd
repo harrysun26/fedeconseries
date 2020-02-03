@@ -29,7 +29,7 @@ The goal of fedeconseries is to obtain US federal reserve economc data.  Reserac
 You can install the released version of fedeconseries from github with:
 
 ```r
-#install.packages("fedeconseries")
+#Ordinary: install.packages("fedeconseries") OR(if not working:)
 library(devtools)
 install_github("harrysun26/fedeconseries")
 ```
@@ -37,6 +37,22 @@ install_github("harrysun26/fedeconseries")
 ## Usage
 A more detailed example can be found in my vignette: https://harrysun26.github.io/fedeconseries/index.html
 
+
+## Functions:
+
+get_fedeconseries("INDPRO", "test",
+                  observation_start = "2013-03-01", observation_end = "2013-03-30",
+                  realtime_start = "2015-02-02", realtime_end = "2015-02-02")
+                  
+This function looks up industrial production data of US. 
+                 
+Note: this function returns data that is adjusted by ALFRED, with methods such as seasonal adjustment for time series. 
+                 
+Wrapper for getting only most recent releases 
+
+get_fred_series2("INDPRO", "indpro", observation_start = "2009-03-01", observation_end = "2009-03-01")
+
+Function above returns real value(raw data) of economic series.  Not adjusted.
 
 ### Terms of use
 

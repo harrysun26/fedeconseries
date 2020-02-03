@@ -23,7 +23,7 @@ Reserach use only.
 You can install the released version of fedeconseries from github with:
 
 ``` r
-#install.packages("fedeconseries")
+#Ordinary: install.packages("fedeconseries") OR(if not working:)
 library(devtools)
 install_github("harrysun26/fedeconseries")
 ```
@@ -32,6 +32,25 @@ install_github("harrysun26/fedeconseries")
 
 A more detailed example can be found in my vignette:
 <https://harrysun26.github.io/fedeconseries/index.html>
+
+## Functions:
+
+get\_fedeconseries(“INDPRO”, “test”, observation\_start = “2013-03-01”,
+observation\_end = “2013-03-30”, realtime\_start = “2015-02-02”,
+realtime\_end = “2015-02-02”)
+
+This function looks up industrial production data of US.
+
+Note: this function returns data that is adjusted by ALFRED, with
+methods such as seasonal adjustment for time series.
+
+Wrapper for getting only most recent releases
+
+get\_fred\_series2(“INDPRO”, “indpro”, observation\_start =
+“2009-03-01”, observation\_end = “2009-03-01”)
+
+Function above returns real value(raw data) of economic series. Not
+adjusted.
 
 ### Terms of use
 
