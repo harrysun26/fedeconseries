@@ -35,22 +35,28 @@ A more detailed example can be found in my vignette:
 
 ## Functions:
 
-get\_fedeconseries(“INDPRO”, “test”, observation\_start = “2013-03-01”,
-observation\_end = “2013-03-30”, realtime\_start = “2015-02-02”,
-realtime\_end = “2015-02-02”)
+  - `search_fedeconseries("Industrial+Production+Index", search_type =
+    'full_text',realtime_start = NULL, realtime_end = NULL)`
+    
+    The above function helps to find the series identifier used in
+    `get_fedeconseries` or `get_fred_series2`.
 
-This function looks up industrial production data of US.
+  - `get_fedeconseries("INDPRO", "test",observation_start =
+    "2013-03-01", observation_end = "2013-03-30",realtime_start =
+    "2015-02-02", realtime_end = "2015-02-02")`
+    
+    This function looks up industrial production data of US.
+    
+    **Note:** this function returns data that is adjusted by ALFRED,
+    with methods such as seasonal adjustment for time series.
 
-Note: this function returns data that is adjusted by ALFRED, with
-methods such as seasonal adjustment for time series.
-
-Wrapper for getting only most recent releases
-
-get\_fred\_series2(“INDPRO”, “indpro”, observation\_start =
-“2009-03-01”, observation\_end = “2009-03-01”)
-
-Function above returns real value(raw data) of economic series. Not
-adjusted.
+  - Wrapper for getting only most recent releases
+    
+    `get_fred_series2("INDPRO", "indpro", observation_start =
+    "2009-03-01", observation_end = "2009-03-01")`
+    
+    Function above returns real value(raw data) of economic series. Not
+    adjusted.
 
 ### Terms of use
 
@@ -66,10 +72,17 @@ Terms of Use, see
 
 This is a basic example which shows you how to solve a common problem:
 
+Say you want to fetch some **Industrial Production Index** data, if you
+do not know the exact series identifier, you could first start with
+search this key words using `search_fedeconseries`.
+
 ``` r
 library(fedeconseries)
-## basic example code
+df <- search_fedeconseries("Industrial+Production+Index")
 ```
+
+Then say you choose the first one from the return result, which is
+**INDPRO**.
 
 ``` r
 library(fedeconseries)
