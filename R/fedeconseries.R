@@ -81,7 +81,7 @@ get_fedeconseries <-
                 obs_start,
                 "&observation_end=",
                 obs_end,
-                "&api_key=98f9f5cad7212e246dc5955e9b744b24&file_type=json")
+                "&api_key=ebee35f5fcd8a74392ca0a267d39b53d&file_type=json")
 
     df_series <-
       try({
