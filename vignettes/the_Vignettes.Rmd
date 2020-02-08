@@ -51,7 +51,7 @@ First, when use this package to fetch data from \url{https://alfred.stlouisfed.o
 library(fedeconseries)
 df <- search_fedeconseries("unemployment")
 ##for display purpose, I omited the 16th column, since it contains long notes.
-head(df[,-16])
+head(df[1:5,1:4])
 ```
 
 From the above dataframe, you could check the title, the frequency, the popularity, the notes, etc., then you could easily choose which one is what you need. Let's do with the first id from the first column: "UNRATE".
