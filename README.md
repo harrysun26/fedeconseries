@@ -39,21 +39,25 @@ A more detailed example can be found in my vignette:
     'full_text',realtime_start = NULL, realtime_end = NULL)`
     
     This function returns the unique identifier(economic variable in
-    database) used in following functions `get_fedeconseries` and
-    `get_econ_series`.
+    database) used in following functions `get_econ_series` and
+    `get_fedeconseries`. Here, we pass keyword “unemployment” into
+    function.
 
   - `get_econ_series("INDPRO", "indpro", observation_start =
     "2009-03-01", observation_end = "2009-03-01")`
     
     This function returns real value(raw data) of economic series. No
-    adjustments.
+    adjustments. Here we pass “INDPRO” as keyword and “indpro” as a
+    rename, with observation start and end date.
 
-  - `get_fedeconseries("UNRATE", "test",observation_start =
+  - `get_fedeconseries("UNRATE", "unemployment",observation_start =
     "2013-03-01", observation_end = "2013-03-30",realtime_start =
     "2015-02-02", realtime_end = "2015-02-02")`
     
     This function looks up unemployment data of US, with varying
-    available adjustment.
+    available date adjustment. Here we pass the keyword “UNRATE”, rename
+    as “unemployment”, with observation start and end date, and research
+    (real) start and end date.
 
 ### Terms of use
 
