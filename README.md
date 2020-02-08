@@ -31,7 +31,7 @@ install_github("harrysun26/fedeconseries")
 ## Usage
 
 A more detailed example can be found in my vignette:
-<https://harrysun26.github.io/fedeconseries/index.html>
+<https://harrysun26.github.io/fedeconseries/articles/the_Vignettes.html>
 
 ## Functions in package:
 
