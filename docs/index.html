@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Federal Reserve Econnomic Series Data  • fedeconseries</title>
+<title>Federal Reserve Economic Series Data  • fedeconseries</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Federal Reserve Econnomic Series Data ">
-<meta property="og:description" content="To obtain US federal reserve economc data.  Reserach use only.">
+<script src="pkgdown.js"></script><meta property="og:title" content="Federal Reserve Economic Series Data ">
+<meta property="og:description" content="To obtain US federal reserve(St. Louis Fed) economic data.  Research use only.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fedeconseries</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/the_Vignettes.html">Detailed usage of library fedeconseries</a>
+      <a href="articles/the_Vignettes.html">Detailed usa of library fedeconseries</a>
     </li>
   </ul>
 </li>
@@ -83,11 +83,11 @@
 <a href="#fedeconseries" class="anchor"></a>fedeconseries</h1></div>
 <!-- badges: start -->
 
-<p>The goal of fedeconseries is to obtain US federal reserve economic data. Reserach use only.</p>
+<p>The goal of fedeconseries is to obtain US federal reserve(St. Louis Fed) economic data. Reserach use only.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of fedeconseries from github with:</p>
+<p>You can install the released version of fedeconseries from CRAN/github with:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co">#Ordinary: install.packages("fedeconseries") OR(if CRAN not working:)</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(devtools)</a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="kw">install_github</span>(<span class="st">"harrysun26/fedeconseries"</span>)</a></code></pre></div>
@@ -95,7 +95,7 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>A more detailed example can be found in my vignette: <a href="https://harrysun26.github.io/fedeconseries/articles/the_Vignettes.html" class="uri">https://harrysun26.github.io/fedeconseries/articles/the_Vignettes.html</a></p>
+<p>A more detailed example can be found in the vignette: <a href="https://harrysun26.github.io/fedeconseries/articles/the_Vignettes.html" class="uri">https://harrysun26.github.io/fedeconseries/articles/the_Vignettes.html</a></p>
 </div>
 <div id="functions-in-package" class="section level2">
 <h2 class="hasAnchor">
@@ -103,7 +103,7 @@
 <ul>
 <li>
 <p><code><a href="reference/search_fedeconseries.html">search_fedeconseries("unemployment", search_type = 'full_text',realtime_start = NULL, realtime_end = NULL)</a></code></p>
-<p>This function returns the unique identifier(economic variable in database) used in following functions <code>get_econ_series</code> and <code>get_fedeconseries</code>. Here, we pass keyword “unemployment” into function.</p>
+<p>This function returns the unique identifier(economic variable in database) used in functions <code>get_econ_series</code> and <code>get_fedeconseries</code>. Here, we pass keyword “unemployment” into the function.</p>
 </li>
 <li>
 <p><code><a href="reference/get_econ_series.html">get_econ_series("INDPRO", "indpro", observation_start = "2009-03-01", observation_end = "2009-03-01")</a></code></p>
@@ -111,7 +111,7 @@
 </li>
 <li>
 <p><code><a href="reference/get_fedeconseries.html">get_fedeconseries("UNRATE", "unemployment",observation_start = "2013-03-01", observation_end = "2013-03-30",realtime_start = "2015-02-02", realtime_end = "2015-02-02")</a></code></p>
-<p>This function looks up unemployment data of US, with varying available date adjustment. Here we pass the keyword “UNRATE”, rename as “unemployment”, with observation start and end date, and research (real) start and end date.</p>
+<p>This function returns unemployment data of US, with varying available date adjustment. Here we pass the keyword “UNRATE”, rename as “unemployment”, with observation start and end date, and research (real) start and end date.</p>
 </li>
 </ul>
 <div id="terms-of-use" class="section level3">
@@ -124,7 +124,8 @@
 <h2 class="hasAnchor">
 <a href="#history" class="anchor"></a>History</h2>
 <ul>
-<li>02.02.2020: Version 1.0 release</li>
+<li>02.02.2020: Version 0.1.0</li>
+<li>02.08.2020: Version 0.1.1</li>
 </ul>
 </div>
 <div id="example" class="section level2">
