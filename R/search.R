@@ -1,19 +1,19 @@
 #' @title Search series_id by key words
-#' @author Weiwei Liu
+#'
 #' @description
 #' Get US federal reserve economic data series that match keywords
 #' This wrapper function is to access data from  \url{https://alfred.stlouisfed.org}
 #'
 #' @name search_fedeconseries
 #'
-#' @param search_text The words to match against economic data series.
+#' @param search_text The words to match economic data series; key words.
 #' @param search_type Determines the type of search to perform.
 #'              One of the following strings: 'full_text', 'series_id'.
 #' @param realtime_start Date of first real time period in "yyyy-mm-dd" format, default: today's date.
 #' @param realtime_end Date of last real time period in "yyyy-mm-dd" format, default: today's date.
 #' @note  More arguments could be added into function, for additional arguments, check
 #'                  \url{https://research.stlouisfed.org/docs/api/fred/series_search.html}
-#' @return return dataframe
+#' @return return dataframe of variables ids.
 #' @export search_fedeconseries
 #' @importFrom jsonlite fromJSON
 #' @usage search_fedeconseries(search_text, search_type = 'full_text',

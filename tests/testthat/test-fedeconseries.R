@@ -1,12 +1,12 @@
 testthat::test_that("whether the function can connect and return values",{
   testthat::expect_equal(
-    get_fedeconseries("INDPRO", "test",
+    get_fedeconseries("INDPRO",
                       obs_start = "2013-03-01", obs_end = "2013-03-01",
                       real_start = "2015-02-02", real_end = "2015-02-02"),
     data.frame(
       date = as.Date("2013-03-01"),
       realtime_period  = as.Date("2015-02-02"),
-      test = 99.488)
+      INDPRO = 99.488)
   )
   testthat::expect_equal(
     dplyr::filter(get_fedeconseries("INDPRO", "test",

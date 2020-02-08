@@ -1,16 +1,16 @@
 #' Accessing FRED
 #' This function can pull time series from the FRED database: \url{https://fred.stlouisfed.org}
-#' @name get_fred_series2
+#' @name get_econ_series
 #'
-#' @param series_id FRED times series ID.
+#' @param series_id FRED times series ID, the unique id retrieved from fed database.
 #' @param series_name Choose a name for the series column in output. Default: series_id.
 #' @param observation_start Choose a name for the series column in output. Default: series_id.
 #' @param observation_end Date of last observation in "yyyy-mm-dd" format. Default: Last observation available.
 #'
-#' @usage get_fred_series2(series_id,
+#' @usage get_econ_series(series_id,
 #' series_name = NULL,observation_start = NULL,
 #'  observation_end = NULL)
-#' @export get_fred_series2
+#' @export get_econ_series
 #'
 #' @importFrom tibble as_tibble
 #' @importFrom dplyr mutate_
@@ -23,8 +23,8 @@
 #' @importFrom stats na.omit
 #' @importFrom jsonlite fromJSON
 #'
-#' @examples get_fred_series2("INDPRO", "indpro")
-get_fred_series2 <- function(series_id, series_name = NULL,
+#' @examples get_econ_series("UNRATE", "unemploymentRate")
+get_econ_series <- function(series_id, series_name = NULL,
                             observation_start = NULL, observation_end = NULL) {
 
 

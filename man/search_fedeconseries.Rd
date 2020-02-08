@@ -8,7 +8,7 @@ search_fedeconseries(search_text, search_type = 'full_text',
                             realtime_start = NULL, realtime_end = NULL)
 }
 \arguments{
-\item{search_text}{The words to match against economic data series.}
+\item{search_text}{The words to match economic data series; key words.}
 
 \item{search_type}{Determines the type of search to perform.
 One of the following strings: 'full_text', 'series_id'.}
@@ -18,7 +18,7 @@ One of the following strings: 'full_text', 'series_id'.}
 \item{realtime_end}{Date of last real time period in "yyyy-mm-dd" format, default: today's date.}
 }
 \value{
-return dataframe
+return dataframe of variables ids.
 }
 \description{
 Get US federal reserve economic data series that match keywords
@@ -31,7 +31,4 @@ More arguments could be added into function, for additional arguments, check
 \examples{
 search_fedeconseries('GDP', search_type = 'full_text',realtime_start = NULL, realtime_end = NULL)
 
-}
-\author{
-Weiwei Liu
 }

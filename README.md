@@ -15,7 +15,7 @@ coverage](https://codecov.io/gh/harrysun26/fedeconseries/branch/master/graph/bad
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
-The goal of fedeconseries is to obtain US federal reserve economc data.
+The goal of fedeconseries is to obtain US federal reserve economic data.
 Reserach use only.
 
 ## Installation
@@ -23,7 +23,7 @@ Reserach use only.
 You can install the released version of fedeconseries from github with:
 
 ``` r
-#Ordinary: install.packages("fedeconseries") OR(if not working:)
+#Ordinary: install.packages("fedeconseries") OR(if CRAN not working:)
 library(devtools)
 install_github("harrysun26/fedeconseries")
 ```
@@ -33,30 +33,27 @@ install_github("harrysun26/fedeconseries")
 A more detailed example can be found in my vignette:
 <https://harrysun26.github.io/fedeconseries/index.html>
 
-## Functions:
+## Functions in package:
 
-  - `search_fedeconseries("Industrial+Production+Index", search_type =
+  - `search_fedeconseries("unemployment", search_type =
     'full_text',realtime_start = NULL, realtime_end = NULL)`
     
-    The above function helps to find the series identifier used in
-    `get_fedeconseries` or `get_fred_series2`.
+    This function returns the unique identifier(economic variable in
+    database) used in following functions `get_fedeconseries` and
+    `get_econ_series`.
 
-  - `get_fedeconseries("INDPRO", "test",observation_start =
+  - `get_econ_series("INDPRO", "indpro", observation_start =
+    "2009-03-01", observation_end = "2009-03-01")`
+    
+    This function returns real value(raw data) of economic series. No
+    adjustments.
+
+  - `get_fedeconseries("UNRATE", "test",observation_start =
     "2013-03-01", observation_end = "2013-03-30",realtime_start =
     "2015-02-02", realtime_end = "2015-02-02")`
     
-    This function looks up industrial production data of US.
-    
-    **Note:** this function returns data that is adjusted by ALFRED,
-    with methods such as seasonal adjustment for time series.
-
-  - Wrapper for getting only most recent releases
-    
-    `get_fred_series2("INDPRO", "indpro", observation_start =
-    "2009-03-01", observation_end = "2009-03-01")`
-    
-    Function above returns real value(raw data) of economic series. Not
-    adjusted.
+    This function looks up unemployment data of US, with varying
+    available adjustment.
 
 ### Terms of use
 
@@ -70,81 +67,4 @@ Terms of Use, see
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-Say you want to fetch some **Industrial Production Index** data, if you
-do not know the exact series identifier, you could first start with
-search this key words using `search_fedeconseries`.
-
-``` r
-library(fedeconseries)
-df <- search_fedeconseries("Industrial+Production+Index")
-```
-
-Then say you choose the first one from the return result, which is
-**INDPRO**.
-
-``` r
-library(fedeconseries)
-df <- get_fred_series2("INDPRO", "indpro")
-```
-
-The output is a data frame
-
-``` r
-head(df)
-#>         date indpro
-#> 1 1919-01-01 5.0124
-#> 2 1919-02-01 4.7908
-#> 3 1919-03-01 4.6524
-#> 4 1919-04-01 4.7355
-#> 5 1919-05-01 4.7632
-#> 6 1919-06-01 5.0678
-```
-
-This can be readily used, i.e. for plotting
-
-``` r
-library(ggplot2)
-ggplot(df) +
-  geom_line(aes(x = date, y = indpro))
-```
-
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
-
-## Vintage data
-
-When using get\_fedeconseries for downloading real-time data sets, there
-will be an additional column for the respective vintage dates.
-
-``` r
-df_vintages <-
-  get_fedeconseries("GDPC1", "rgdp",
-                    obs_start = "2007-05-31",
-                    real_start = "2008-05-31", real_end = "2009-03-30")
-head(df_vintages)
-#>         date realtime_period    rgdp
-#> 1 2007-07-01      2008-05-31 11658.9
-#> 2 2007-10-01      2008-05-31 11675.7
-#> 3 2008-01-01      2008-05-31 11701.9
-#> 4 2007-07-01      2008-06-26 11658.9
-#> 5 2007-10-01      2008-06-26 11675.7
-#> 6 2008-01-01      2008-06-26 11703.6
-```
-
-Because of its output being a tidy data frame, it is easy to visualise
-revisions by
-
-``` r
-library(ggplot2)
-
-ggplot(df_vintages) +
-  geom_line(aes(x = date, y = rgdp, colour = as.factor(realtime_period))) +
-  theme_bw() +
-  theme(
-    legend.title = element_blank(),
-    legend.position = "bottom"
-  )
-```
-
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+Please check the “Usage” link above(package vignette).

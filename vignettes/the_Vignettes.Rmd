@@ -1,5 +1,5 @@
 ---
-title: "the Vignettes of fedeconseries"
+title: "Detailed usage of library fedeconseries"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -8,7 +8,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-An easy way to download ALFRED data (US Frderal Reserve Economic data).
+An easy way to download clean ALFRED data (US Frderal Reserve Economic Series data--St.Louis Fed).
 
 ## Installation
 
@@ -17,38 +17,58 @@ You may install the last stable release , the latest development version from gi
 
 ```{r}
 # install.packages("fedeconseries")
-# or---
+# or(if CRAN not working)---
 # install.packages("devtools")
+# library(devtools)
 # devtools::install_github("harrysun26/fedeconseries")
 
 ```
 
-## Usage
+## functions overview: 
 
-First, when use this package to fetch data from \url{https://alfred.stlouisfed.org}, you need to know the `s_id` which is the data identifier. If you don't know the series_id, you could try `search_fedeconseries` to search some keywords. Say you want to know the Industrial Production Index, but you do not the series identifier to fetch data. Here is whay you could do:
+
+* 
+`search_fedeconseries("unemployment", search_type = 'full_text',realtime_start = NULL, realtime_end = NULL)`
+
+  This function returns the unique identifier(economic variable in database) used in following functions `get_econ_series` and `get_fedeconseries`. Here, we pass keyword "unemployment" into function. 
+
+*
+  `get_econ_series("INDPRO", "indpro", observation_start = "2009-03-01", observation_end = "2009-03-01")`
+
+  This function returns real value(raw data) of economic series.  No adjustments. Here we pass "INDPRO" as keyword and "indpro" as a rename, with observation start and end date. 
+
+*                   
+`get_fedeconseries("UNRATE", "unemployment",observation_start = "2013-03-01", observation_end = "2013-03-30",realtime_start = "2015-02-02", realtime_end = "2015-02-02")`
+                  
+  This function looks up unemployment data of US, with varying available date adjustment. Here we pass the keyword "UNRATE", rename as "unemployment", with observation start and end date, and research (real) start and end date. 
+
+
+## Usage:
+
+First, when use this package to fetch data from \url{https://alfred.stlouisfed.org}, you need to know the `s_id` which is the data identifier(anmely the economic variable name in website database). If you don't know the series_id, you could try `search_fedeconseries` to search some keywords. Say you want to know the "unemployment", but you do not the series identifier. Here is whay you could do:
 
 ```{r}
 library(fedeconseries)
-df <- search_fedeconseries("Industrial+Production+Index")
+df <- search_fedeconseries("unemployment")
 ##for display purpose, I omited the 16th column, since it contains long notes.
 head(df[,-16])
 ```
 
-From the above dataframe, you could check the title, the frequency, the popularity, the notes, etc., then you could easily choose which one is what you need.
+From the above dataframe, you could check the title, the frequency, the popularity, the notes, etc., then you could easily choose which one is what you need. Let's do with the first id from the first column: "UNRATE".
 
-
-Assume you have choosed 'INDPRO',next step,downloading data is straightforward (for real-time data from ALFRED see below):
+To download the data, use function :
 
 
 ```{r}
 library(fedeconseries)
-df <- get_fred_series2("INDPRO", "indpro")
+df <- get_econ_series("UNRATE","unemployment")
 ```
 
 The output is a data frame
 
 ```{r}
 head(df)
+tail(df)
 ```
 
 This can be readily used, i.e. for plotting
@@ -56,19 +76,19 @@ This can be readily used, i.e. for plotting
 ```{r, fig.show = "hold"}
 library(ggplot2)
 ggplot(df) +
-  geom_line(aes(x = date, y = indpro))
+  geom_line(aes(x = date, y = unemployment))
 ```
 
-## Vintage data
+## Advanced search for historical data: Seasonal adjustments
 
 When using get_fedeconseries for downloading real-time data sets, there will be an additional column for the respective vintage dates.
 
 ```{r}
 df_vintages <-
-  get_fedeconseries("GDPC1", "rgdp",
-                    obs_start = "2007-05-31",
-                    real_start = "2008-05-31", real_end = "2009-03-30")
-head(df_vintages)
+  get_fedeconseries("UNRATE", "unemploymentRate",
+                    obs_start = "2000-01-01",
+                    real_start = "2019-05-01")
+df_vintages
 ```
 
 Because of its output being a tidy data frame, it is easy to visualise revisions by
@@ -77,7 +97,7 @@ Because of its output being a tidy data frame, it is easy to visualise revisions
 library(ggplot2)
 
 ggplot(df_vintages) +
-  geom_line(aes(x = date, y = rgdp, colour = as.factor(realtime_period))) +
+  geom_line(aes(x = date, y = unemploymentRate, colour = as.factor(realtime_period))) +
   theme_bw() +
   theme(
     legend.title = element_blank(),
