@@ -67,7 +67,7 @@ Terms of Use, see
 
 ## History
 
-  - 02.02.2020: Version 1.0 release
+  - 02.02.2020: Version 0.1.0 release
 
 ## Example
 
