@@ -15,12 +15,13 @@ coverage](https://codecov.io/gh/harrysun26/fedeconseries/branch/master/graph/bad
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
-The goal of fedeconseries is to obtain US federal reserve economic data.
-Reserach use only.
+The goal of fedeconseries is to obtain US federal reserve(St. Louis Fed)
+economic data. Reserach use only.
 
 ## Installation
 
-You can install the released version of fedeconseries from github with:
+You can install the released version of fedeconseries from CRAN/github
+with:
 
 ``` r
 #Ordinary: install.packages("fedeconseries") OR(if CRAN not working:)
@@ -30,7 +31,7 @@ install_github("harrysun26/fedeconseries")
 
 ## Usage
 
-A more detailed example can be found in my vignette:
+A more detailed example can be found in the vignette:
 <https://harrysun26.github.io/fedeconseries/articles/the_Vignettes.html>
 
 ## Functions in package:
@@ -39,8 +40,8 @@ A more detailed example can be found in my vignette:
     'full_text',realtime_start = NULL, realtime_end = NULL)`
     
     This function returns the unique identifier(economic variable in
-    database) used in following functions `get_econ_series` and
-    `get_fedeconseries`. Here, we pass keyword “unemployment” into
+    database) used in functions `get_econ_series` and
+    `get_fedeconseries`. Here, we pass keyword “unemployment” into the
     function.
 
   - `get_econ_series("INDPRO", "indpro", observation_start =
@@ -54,7 +55,7 @@ A more detailed example can be found in my vignette:
     "2013-03-01", observation_end = "2013-03-30",realtime_start =
     "2015-02-02", realtime_end = "2015-02-02")`
     
-    This function looks up unemployment data of US, with varying
+    This function returns unemployment data of US, with varying
     available date adjustment. Here we pass the keyword “UNRATE”, rename
     as “unemployment”, with observation start and end date, and research
     (real) start and end date.
@@ -67,7 +68,8 @@ Terms of Use, see
 
 ## History
 
-  - 02.02.2020: Version 0.1.0 release
+  - 02.02.2020: Version 0.1.0
+  - 02.08.2020: Version 0.1.1
 
 ## Example
 
