@@ -10,7 +10,7 @@ vignette: >
 
 An easy way to download clean ALFRED data (US Frderal Reserve Economic Series data--St.Louis Fed).
 
-## Installation
+## 1. Installation
 
 You may install the last stable release , the latest development version from github.
 
@@ -22,13 +22,13 @@ You may install the last stable release , the latest development version from gi
 
 ```
 
-## functions overview: 
+## 1.1functions overview: 
 
 
 * 
 `search_fedeconseries("unemployment", search_type = 'full_text',realtime_start = NULL, realtime_end = NULL)`
 
-  This function returns the unique identifier(economic variable in database) used in following functions `get_econ_series` and `get_fedeconseries`. Here, we pass keyword "unemployment" into function. 
+  This function returns the unique identifier(economic variable in database) used in following functions `get_econ_series` and `get_fedeconseries`. For example, we pass keyword "unemployment" into function. 
 
 *
   `get_econ_series("INDPRO", "indpro", observation_start = "2009-03-01", observation_end = "2009-03-01")`
@@ -41,7 +41,9 @@ You may install the last stable release , the latest development version from gi
   This function looks up unemployment data of US, with varying available date adjustment. Here we pass the keyword "UNRATE", rename as "unemployment", with observation start and end date, and research (real) start and end date. 
 
 
-## Usage:
+## 2. How to use the functions:
+
+### 2.1 US umemployment rate: 
 
 First, when use this package to fetch data from \url{https://alfred.stlouisfed.org}, you need to know the `s_id` which is the data identifier(anmely the economic variable name in website database). If you don't know the series_id, you could try `search_fedeconseries` to search some keywords. Say you want to know the "unemployment", but you do not the series identifier. Here is whay you could do:
 
@@ -56,7 +58,6 @@ From the above dataframe, you could check the title, the frequency, the populari
 
 To download the data, use function :
 
-
 ```{r}
 library(fedeconseries)
 df <- get_econ_series("UNRATE","unemployment")
@@ -65,7 +66,6 @@ df <- get_econ_series("UNRATE","unemployment")
 The output is a data frame
 
 ```{r}
-head(df)
 tail(df)
 ```
 
@@ -77,7 +77,43 @@ ggplot(df) +
   geom_line(aes(x = date, y = unemployment))
 ```
 
-## Advanced search for historical data: Seasonal adjustments
+### 2.2 Corporate Bond credit spread plot:
+
+We searched the data identifiers for many corporate bond effective yields(provided by Bank of America Merrill Lynch) from alfred, retrieve the series, and process the dataframe a little bit to plot:
+
+```{r}
+library(tidyverse)
+aaa <- get_econ_series("BAMLC0A1CAAAEY", "aaa", observation_start = "2002-12-18", observation_end = "2020-12-15")
+bbb <- get_econ_series("BAMLC0A4CBBBEY", "bbb", observation_start = "2002-12-18", observation_end = "2020-12-15")
+bb <- get_econ_series("BAMLH0A1HYBBEY", "bb", observation_start = "2002-12-18", observation_end = "2020-12-15")
+ccc <- get_econ_series("BAMLH0A3HYCEY", "ccc", observation_start = "2002-12-18", observation_end = "2020-12-15")
+asset <- get_econ_series("WALCL", "fed_asset", observation_start = "2002-12-18", observation_end = "2020-12-15")
+
+df <- Reduce(function(...) merge(..., by='date'), mget(c("aaa","bbb","bb","ccc","asset"))) %>% mutate(ccc_aaa = ccc-aaa, ccc_bbb = ccc-bbb, ccc_bb = ccc-bb, bbb_aaa = bbb-aaa, weekly_fed_purchase = c(NA,diff(fed_asset))) %>% na.omit() %>% select(-aaa,-bbb,-bb,-ccc,-fed_asset)
+```
+
+And plot the series: 
+```{r}
+ggplot(df, aes(x=date)) + 
+  geom_line(aes(y = ccc_aaa, color = "CCC-AAA spread")) + 
+  geom_line(aes(y = ccc_bbb, color="CCC-BBB spread")) +
+  geom_line(aes(y = ccc_bb, color="CCC-BB spread")) +
+  geom_line(aes(y = bbb_aaa, color="BBB-AAA spread"))+
+  ggtitle("Corporate Bond Credit Spread -- BOAML") +
+  xlab("Time") + ylab("Spread,%")
+```
+
+### 2.3 US federal reserve total assets:
+
+We plot the weekly asset purchase by US federal reserve:
+```{r}
+ggplot(df, aes(x=date)) + 
+  geom_line(aes(y = weekly_fed_purchase))+
+  ggtitle("U.S. Federal Reserve Asset Purchase") +
+  xlab("Time") + ylab("Weekly puschase, in $USD millions")
+```
+
+## 3. Advanced search for historical data: Seasonal adjustments
 
 When using get_fedeconseries for downloading real-time data sets, there will be an additional column for the respective vintage dates.
 
