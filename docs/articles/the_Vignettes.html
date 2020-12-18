@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Detailed usa of library fedeconseries • fedeconseries</title>
+<title>A concrete example of how to use the library fedeconseries • fedeconseries</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Detailed usa of library fedeconseries">
+<script src="../pkgdown.js"></script><meta property="og:title" content="A concrete example of how to use the library fedeconseries">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/the_Vignettes.html">Detailed usa of library fedeconseries</a>
+      <a href="../articles/the_Vignettes.html">A concrete example of how to use the library fedeconseries</a>
     </li>
   </ul>
 </li>
@@ -79,9 +79,9 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Detailed usa of library fedeconseries</h1>
+      <h1>A concrete example of how to use the library fedeconseries</h1>
             
-            <h4 class="date">2020-02-08</h4>
+            <h4 class="date">2020-12-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/harrysun26/fedeconseries/blob/master/vignettes/the_Vignettes.Rmd"><code>vignettes/the_Vignettes.Rmd</code></a></small>
       <div class="hidden name"><code>the_Vignettes.Rmd</code></div>
@@ -95,11 +95,9 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You may install the last stable release , the latest development version from github.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install.packages("fedeconseries")</span></a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="co"># or(if CRAN not working)---</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co"># library(devtools)</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="co"># devtools::install_github("harrysun26/fedeconseries")</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="co"># library(devtools)</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co"># devtools::install_github("harrysun26/fedeconseries")</span></a></code></pre></div>
 </div>
 <div id="functions-overview" class="section level2">
 <h2 class="hasAnchor">
@@ -128,17 +126,17 @@
 <a class="sourceLine" id="cb2-3" title="3"><span class="co">##for display purpose, I omited the 16th column, since it contains long notes.</span></a>
 <a class="sourceLine" id="cb2-4" title="4"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(df[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</a></code></pre></div>
 <pre><code>##            id realtime_start realtime_end
-## 1      UNRATE     2020-02-08   2020-02-08
-## 2   UNRATENSA     2020-02-08   2020-02-08
-## 3        NROU     2020-02-08   2020-02-08
-## 4 LNS14000024     2020-02-08   2020-02-08
-## 5 LNU04000024     2020-02-08   2020-02-08
-##                                      title
-## 1                        Unemployment Rate
-## 2                        Unemployment Rate
-## 3 Natural Rate of Unemployment (Long-Term)
-## 4     Unemployment Rate: 20 years and over
-## 5     Unemployment Rate: 20 years and over</code></pre>
+## 1      UNRATE     2020-12-17   2020-12-17
+## 2   UNRATENSA     2020-12-17   2020-12-17
+## 3        NROU     2020-12-17   2020-12-17
+## 4 LNS14000031     2020-12-17   2020-12-17
+## 5        CCSA     2020-12-17   2020-12-17
+##                                                               title
+## 1                                                 Unemployment Rate
+## 2                                                 Unemployment Rate
+## 3                          Natural Rate of Unemployment (Long-Term)
+## 4 Unemployment Rate - 20 Yrs. &amp; Over, Black or African American Men
+## 5                           Continued Claims (Insured Unemployment)</code></pre>
 <p>From the above dataframe, you could check the title, the frequency, the popularity, the notes, etc., then you could easily choose which one is what you need. Let’s do with the first id from the first column: “UNRATE”.</p>
 <p>To download the data, use function :</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(fedeconseries)</a>
@@ -154,12 +152,12 @@
 ## 6 1948-06-01          3.6</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">tail</a></span>(df)</a></code></pre></div>
 <pre><code>##           date unemployment
-## 860 2019-08-01          3.7
-## 861 2019-09-01          3.5
-## 862 2019-10-01          3.6
-## 863 2019-11-01          3.5
-## 864 2019-12-01          3.5
-## 865 2020-01-01          3.6</code></pre>
+## 870 2020-06-01         11.1
+## 871 2020-07-01         10.2
+## 872 2020-08-01          8.4
+## 873 2020-09-01          7.9
+## 874 2020-10-01          6.9
+## 875 2020-11-01          6.7</code></pre>
 <p>This can be readily used, i.e. for plotting</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="kw">ggplot</span>(df) <span class="op">+</span></a>
@@ -176,12 +174,12 @@
 <a class="sourceLine" id="cb10-4" title="4">                    <span class="dt">real_start =</span> <span class="st">"2019-05-01"</span>)</a>
 <a class="sourceLine" id="cb10-5" title="5"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">tail</a></span>(df_vintages)</a></code></pre></div>
 <pre><code>##            date realtime_period unemploymentRate
-## 2591 2019-08-01      2020-02-07              3.7
-## 2592 2019-09-01      2020-02-07              3.5
-## 2593 2019-10-01      2020-02-07              3.6
-## 2594 2019-11-01      2020-02-07              3.5
-## 2595 2019-12-01      2020-02-07              3.5
-## 2596 2020-01-01      2020-02-07              3.6</code></pre>
+## 5056 2020-06-01      2020-12-04             11.1
+## 5057 2020-07-01      2020-12-04             10.2
+## 5058 2020-08-01      2020-12-04              8.4
+## 5059 2020-09-01      2020-12-04              7.9
+## 5060 2020-10-01      2020-12-04              6.9
+## 5061 2020-11-01      2020-12-04              6.7</code></pre>
 <p>Because of its output being a tidy data frame, it is easy to visualise revisions by</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb12-2" title="2"></a>

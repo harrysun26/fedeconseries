@@ -29,13 +29,12 @@ The goal of fedeconseries is to obtain US federal reserve(St. Louis Fed) economi
 You can install the released version of fedeconseries from CRAN/github with:
 
 ```r
-#Ordinary: install.packages("fedeconseries") OR(if CRAN not working:)
 library(devtools)
 install_github("harrysun26/fedeconseries")
 ```
 
 ## Usage
-A more detailed example can be found in the vignette: https://harrysun26.github.io/fedeconseries/articles/the_Vignettes.html
+A more concrete example can be found in the vignette: https://harrysun26.github.io/fedeconseries/articles/the_Vignettes.html
 
 
 ## Functions in package:
@@ -63,6 +62,7 @@ When using the FRED&copy; API, you are agreeing to be bound by the FRED&copy; AP
 ## History
 - 02.02.2020: Version 0.1.0
 - 02.08.2020: Version 0.1.1 
+- 12.17.2020: Version 0.1.2
 
 ## Example
 

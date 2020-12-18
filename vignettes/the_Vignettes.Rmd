@@ -1,7 +1,7 @@
 ---
-title: "Detailed usa of library fedeconseries"
+title: "A concrete example of how to use the library fedeconseries"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: rmarkdown::html_vignette 
 vignette: >
   %\VignetteIndexEntry{the_Vignettes}
   %\VignetteEngine{knitr::rmarkdown}
@@ -16,8 +16,6 @@ You may install the last stable release , the latest development version from gi
 
 
 ```{r}
-# install.packages("fedeconseries")
-# or(if CRAN not working)---
 # install.packages("devtools")
 # library(devtools)
 # devtools::install_github("harrysun26/fedeconseries")

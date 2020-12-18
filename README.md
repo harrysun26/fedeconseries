@@ -20,18 +20,17 @@ economic data. Reserach use only.
 
 ## Installation
 
-You can install the released version of fedeconseries from CRAN/github
+You can install the released version of fedeconseries from github
 with:
 
 ``` r
-#Ordinary: install.packages("fedeconseries") OR(if CRAN not working:)
 library(devtools)
 install_github("harrysun26/fedeconseries")
 ```
 
 ## Usage
 
-A more detailed example can be found in the vignette:
+A more concrete example can be found in the vignette:
 <https://harrysun26.github.io/fedeconseries/articles/the_Vignettes.html>
 
 ## Functions in package:
