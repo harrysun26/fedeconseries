@@ -25,5 +25,6 @@ Imports:
     lubridate,
     magrittr,
     stats,
+    tidyverse,
     jsonlite
 Depends: R (>= 3.6)
