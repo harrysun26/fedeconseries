@@ -1,5 +1,5 @@
 ---
-title: "Examples of how to use US federal reserve API -- fedeconseries"
+title: "Examples of How to Use the US Federal Reserve API -- fedeconseries"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette 
 vignette: >
@@ -22,7 +22,7 @@ The latest development version can be installed from github.
 
 ```
 
-### 1.1functions overview: 
+### 1.1 functions overview: 
 
 * 
 `search_fedeconseries("unemployment", search_type = 'full_text',realtime_start = NULL, realtime_end = NULL)`
@@ -40,13 +40,13 @@ The latest development version can be installed from github.
   This function looks up unemployment data of the US, with varying available date adjustment. Here we pass the keyword "UNRATE", rename as "unemployment", with observation start and end date, and research (real) start and end date. 
 
 
-## 2. Examples of how to use the functions:
+## 2. Examples of How to Use the Functions:
 
 ### 2.1 Example one: find identifier for "US umemployment rate"
 
 First, when using this package to fetch data from \url{https://alfred.stlouisfed.org}, you need to know the `s_id` which is the data identifier(anmely the economic variable name in website database). If you don't know the series_id, you could try `search_fedeconseries` to search some keywords. Say you want to know the "unemployment", but you do not the series identifier. Here is a way to solve the problem:
 
-```{r}
+```{r,message=FALSE,warning=FALSE}
 library(fedeconseries)
 df <- search_fedeconseries("unemployment")
 ##for display purpose, I omited the 16th column, since it contains long notes.
@@ -57,7 +57,7 @@ From the above dataframe, you could check the title, the frequency, the populari
 
 To download the data, use function :
 
-```{r}
+```{r,message=FALSE,warning=FALSE}
 library(fedeconseries)
 df <- get_econ_series("UNRATE","unemployment")
 ```
@@ -81,9 +81,8 @@ ggplot(df) +
 
 We searched the data identifiers for several corporate bond effective yields(provided by Bank of America Merrill Lynch) from alfred, retrieve the series, and process the dataframe a little bit for plotting:
 
-```{r}
+```{r,warning=FALSE}
 library(tidyverse)
-
 
 aaa <- get_econ_series("BAMLC0A1CAAAEY", "aaa", observation_start = "2002-12-18", observation_end = "2020-12-15")
 bbb <- get_econ_series("BAMLC0A4CBBBEY", "bbb", observation_start = "2002-12-18", observation_end = "2020-12-15")
@@ -115,7 +114,7 @@ ggplot(df, aes(x=date)) +
   xlab("Date") + ylab("Weekly purchase,  in $USD millions")
 ```
 
-## 3. Advanced search for historical data: seasonal adjustments
+## 3. Advanced Search for Historical Data: Seasonal Adjustments
 
 When we use get_fedeconseries to download historical data sets, there will be an additional column for the respective vintage dates.
 
