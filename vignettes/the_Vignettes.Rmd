@@ -8,7 +8,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-The fedeconseries, an R API package, provides an easy way to obtain real-time and archival data from the U.S. Frderal Reserve.  Real-time series means there is no adjustment on raw data; archival series means there are adjustments on raw data (For instance on February 2, 1990, the US Bureau of Labor Statistics reported the US unemployment rate for the month of January, 1990 as 5.3 percent. Over 6 years later on March 8, 1996, the US unemployment rate for the same month January, 1990 was revised to 5.4 percent).  The FRED official website \url{https://fred.stlouisfed.org/} tracks 767,000 US and international time series from 102 sources.  
+The fedeconseries, an R API package developed by Harry, provides an easy way to obtain real-time and archival data from the U.S. Frderal Reserve.  Real-time series means there is no adjustment on raw data; archival series means there are adjustments on raw data (For instance on February 2, 1990, the US Bureau of Labor Statistics reported the US unemployment rate for the month of January, 1990 as 5.3 percent. Over 6 years later on March 8, 1996, the US unemployment rate for the same month January, 1990 was revised to 5.4 percent).  The FRED official website \url{https://fred.stlouisfed.org/} tracks 767,000 US and international time series from 102 sources.  
 
 ## 1. Package Installation
 
@@ -73,10 +73,11 @@ This can be readily used for plotting,
 ```{r, fig.show = "hold"}
 library(ggplot2)
 ggplot(df) +
+  ggtitle("US Unemployment Rate") +
   geom_line(aes(x = date, y = unemployment))
 ```
 
-### 2.2 Example two: Corporate Bond credit spread
+### 2.2 Example two: corporate bond credit spread
 
 We searched the data identifiers for several corporate bond effective yields(provided by Bank of America Merrill Lynch) from alfred, retrieve the series, and process the dataframe a little bit for plotting:
 
@@ -101,7 +102,7 @@ ggplot(df, aes(x=date)) +
   geom_line(aes(y = ccc_bb, color="CCC-BB spread")) +
   geom_line(aes(y = bbb_aaa, color="BBB-AAA spread"))+
   ggtitle("Corporate Bond Credit Spread -- BOAML") +
-  xlab("Time") + ylab("Spread,%")
+  xlab("Date") + ylab("Spread,%")
 ```
 
 ### 2.3 Example three: US federal reserve weekly asset purchase
@@ -111,7 +112,7 @@ We plot the weekly asset purchase by US federal reserve:
 ggplot(df, aes(x=date)) + 
   geom_line(aes(y = weekly_fed_purchase))+
   ggtitle("U.S. Federal Reserve Asset Purchase") +
-  xlab("Time") + ylab("Weekly puschase, in $USD millions")
+  xlab("Date") + ylab("Weekly purchase,  in $USD millions")
 ```
 
 ## 3. Advanced search for historical data: seasonal adjustments
