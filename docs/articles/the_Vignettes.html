@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A concrete example of how to use the library fedeconseries • fedeconseries</title>
+<title>Examples of how to use US federal reserve API -- fedeconseries • fedeconseries</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="A concrete example of how to use the library fedeconseries">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Examples of how to use US federal reserve API -- fedeconseries">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -54,7 +54,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/the_Vignettes.html">A concrete example of how to use the library fedeconseries</a>
+      <a href="../articles/the_Vignettes.html">Examples of how to use US federal reserve API -- fedeconseries</a>
     </li>
   </ul>
 </li>
@@ -79,9 +79,9 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>A concrete example of how to use the library fedeconseries</h1>
+      <h1>Examples of how to use US federal reserve API – fedeconseries</h1>
             
-            <h4 class="date">2020-12-18</h4>
+            <h4 class="date">2020-12-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/harrysun26/fedeconseries/blob/master/vignettes/the_Vignettes.Rmd"><code>vignettes/the_Vignettes.Rmd</code></a></small>
       <div class="hidden name"><code>the_Vignettes.Rmd</code></div>
@@ -90,57 +90,57 @@
 
     
     
-<p>An easy way to download clean ALFRED data (US Frderal Reserve Economic Series data–St.Louis Fed).</p>
-<div id="installation" class="section level2">
+<p>The fedeconseries, an R API package, provides an easy way to obtain real-time and archival data from the U.S. Frderal Reserve. Real-time series means there is no adjustment on raw data; archival series means there are adjustments on raw data (For instance on February 2, 1990, the US Bureau of Labor Statistics reported the US unemployment rate for the month of January, 1990 as 5.3 percent. Over 6 years later on March 8, 1996, the US unemployment rate for the same month January, 1990 was revised to 5.4 percent). The FRED official website  tracks 767,000 US and international time series from 102 sources.</p>
+<div id="package-installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>1. Installation</h2>
-<p>You may install the last stable release , the latest development version from github.</p>
+<a href="#package-installation" class="anchor"></a>1. Package Installation</h2>
+<p>The latest development version can be installed from github.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install.packages("devtools")</span></a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="co"># library(devtools)</span></a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="co"># devtools::install_github("harrysun26/fedeconseries")</span></a></code></pre></div>
-</div>
-<div id="functions-overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#functions-overview" class="anchor"></a>1.1functions overview:</h2>
+<div id="functions-overview" class="section level3">
+<h3 class="hasAnchor">
+<a href="#functions-overview" class="anchor"></a>1.1functions overview:</h3>
 <ul>
 <li>
 <p><code><a href="../reference/search_fedeconseries.html">search_fedeconseries("unemployment", search_type = 'full_text',realtime_start = NULL, realtime_end = NULL)</a></code></p>
-<p>This function returns the unique identifier(economic variable in database) used in following functions <code>get_econ_series</code> and <code>get_fedeconseries</code>. For example, we pass keyword “unemployment” into function.</p>
+<p>This function retrives the unique identifier(economic variable in database) used in the following functions <code>get_econ_series</code> and <code>get_fedeconseries</code>. For example, we pass keyword “unemployment” into function. If there are multiple keywords, use “+” inside quotes without spaces, for example, “industrial+production+index”.</p>
 </li>
 <li>
 <p><code><a href="../reference/get_econ_series.html">get_econ_series("INDPRO", "indpro", observation_start = "2009-03-01", observation_end = "2009-03-01")</a></code></p>
-<p>This function returns real value(raw data) of economic series. No adjustments. Here we pass “INDPRO” as keyword and “indpro” as a rename, with observation start and end date.</p>
+<p>This function retrieves real-time value(raw data) of economic series without adjustments. Here we pass “INDPRO” as keyword and “indpro” as a rename, with observation start and end date.</p>
 </li>
 <li>
 <p><code><a href="../reference/get_fedeconseries.html">get_fedeconseries("UNRATE", "unemployment",observation_start = "2013-03-01", observation_end = "2013-03-30",realtime_start = "2015-02-02", realtime_end = "2015-02-02")</a></code></p>
-<p>This function looks up unemployment data of US, with varying available date adjustment. Here we pass the keyword “UNRATE”, rename as “unemployment”, with observation start and end date, and research (real) start and end date.</p>
+<p>This function looks up unemployment data of the US, with varying available date adjustment. Here we pass the keyword “UNRATE”, rename as “unemployment”, with observation start and end date, and research (real) start and end date.</p>
 </li>
 </ul>
 </div>
-<div id="how-to-use-the-functions" class="section level2">
+</div>
+<div id="examples-of-how-to-use-the-functions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#how-to-use-the-functions" class="anchor"></a>2. How to use the functions:</h2>
-<div id="us-umemployment-rate" class="section level3">
+<a href="#examples-of-how-to-use-the-functions" class="anchor"></a>2. Examples of how to use the functions:</h2>
+<div id="example-one-find-identifier-for-us-umemployment-rate" class="section level3">
 <h3 class="hasAnchor">
-<a href="#us-umemployment-rate" class="anchor"></a>2.1 US umemployment rate:</h3>
-<p>First, when use this package to fetch data from , you need to know the <code>s_id</code> which is the data identifier(anmely the economic variable name in website database). If you don’t know the series_id, you could try <code>search_fedeconseries</code> to search some keywords. Say you want to know the “unemployment”, but you do not the series identifier. Here is whay you could do:</p>
+<a href="#example-one-find-identifier-for-us-umemployment-rate" class="anchor"></a>2.1 Example one: find identifier for “US umemployment rate”</h3>
+<p>First, when using this package to fetch data from , you need to know the <code>s_id</code> which is the data identifier(anmely the economic variable name in website database). If you don’t know the series_id, you could try <code>search_fedeconseries</code> to search some keywords. Say you want to know the “unemployment”, but you do not the series identifier. Here is a way to solve the problem:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(fedeconseries)</a>
 <a class="sourceLine" id="cb2-2" title="2">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/search_fedeconseries.html">search_fedeconseries</a></span>(<span class="st">"unemployment"</span>)</a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="co">##for display purpose, I omited the 16th column, since it contains long notes.</span></a>
 <a class="sourceLine" id="cb2-4" title="4"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(df[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>])</a></code></pre></div>
 <pre><code>##            id realtime_start realtime_end
-## 1      UNRATE     2020-12-18   2020-12-18
-## 2   UNRATENSA     2020-12-18   2020-12-18
-## 3        NROU     2020-12-18   2020-12-18
-## 4        CCSA     2020-12-18   2020-12-18
-## 5 LNS14000031     2020-12-18   2020-12-18
+## 1      UNRATE     2020-12-21   2020-12-21
+## 2   UNRATENSA     2020-12-21   2020-12-21
+## 3        NROU     2020-12-21   2020-12-21
+## 4 LNS14000031     2020-12-21   2020-12-21
+## 5        CCSA     2020-12-21   2020-12-21
 ##                                                               title
 ## 1                                                 Unemployment Rate
 ## 2                                                 Unemployment Rate
 ## 3                          Natural Rate of Unemployment (Long-Term)
-## 4                           Continued Claims (Insured Unemployment)
-## 5 Unemployment Rate - 20 Yrs. &amp; Over, Black or African American Men</code></pre>
-<p>From the above dataframe, you could check the title, the frequency, the popularity, the notes, etc., then you could easily choose which one is what you need. Let’s do with the first id from the first column: “UNRATE”.</p>
+## 4 Unemployment Rate - 20 Yrs. &amp; Over, Black or African American Men
+## 5                           Continued Claims (Insured Unemployment)</code></pre>
+<p>From the above dataframe, you could check the title, the frequency, the popularity, the notes, etc., then you could easily choose which one is needed. Let’s do with the first id from the first column: “UNRATE”.</p>
 <p>To download the data, use function :</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(fedeconseries)</a>
 <a class="sourceLine" id="cb4-2" title="2">df &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_econ_series.html">get_econ_series</a></span>(<span class="st">"UNRATE"</span>,<span class="st">"unemployment"</span>)</a></code></pre></div>
@@ -153,26 +153,26 @@
 ## 873 2020-09-01          7.9
 ## 874 2020-10-01          6.9
 ## 875 2020-11-01          6.7</code></pre>
-<p>This can be readily used, i.e. for plotting</p>
+<p>This can be readily used for plotting,</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="kw">ggplot</span>(df) <span class="op">+</span></a>
 <a class="sourceLine" id="cb7-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">x =</span> date, <span class="dt">y =</span> unemployment))</a></code></pre></div>
 <p><img src="the_Vignettes_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
-<div id="corporate-bond-credit-spread-plot" class="section level3">
+<div id="example-two-corporate-bond-credit-spread" class="section level3">
 <h3 class="hasAnchor">
-<a href="#corporate-bond-credit-spread-plot" class="anchor"></a>2.2 Corporate Bond credit spread plot:</h3>
-<p>We searched the data identifiers for many corporate bond effective yields(provided by Bank of America Merrill Lynch) from alfred, retrieve the series, and process the dataframe a little bit to plot:</p>
+<a href="#example-two-corporate-bond-credit-spread" class="anchor"></a>2.2 Example two: Corporate Bond credit spread</h3>
+<p>We searched the data identifiers for several corporate bond effective yields(provided by Bank of America Merrill Lynch) from alfred, retrieve the series, and process the dataframe a little bit for plotting:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a></code></pre></div>
 <pre><code>## Warning: package 'tidyverse' was built under R version 3.6.3</code></pre>
-<pre><code>## -- Attaching packages --- tidyverse 1.3.0 --</code></pre>
+<pre><code>## -- Attaching packages ------------------------------ tidyverse 1.3.0 --</code></pre>
 <pre><code>## v tibble  2.1.3     v dplyr   0.8.3
 ## v tidyr   1.0.2     v stringr 1.4.0
 ## v readr   1.3.1     v forcats 0.5.0
 ## v purrr   0.3.3</code></pre>
 <pre><code>## Warning: package 'readr' was built under R version 3.6.3</code></pre>
 <pre><code>## Warning: package 'forcats' was built under R version 3.6.3</code></pre>
-<pre><code>## -- Conflicts ------ tidyverse_conflicts() --
+<pre><code>## -- Conflicts --------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">aaa &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_econ_series.html">get_econ_series</a></span>(<span class="st">"BAMLC0A1CAAAEY"</span>, <span class="st">"aaa"</span>, <span class="dt">observation_start =</span> <span class="st">"2002-12-18"</span>, <span class="dt">observation_end =</span> <span class="st">"2020-12-15"</span>)</a></code></pre></div>
@@ -200,9 +200,9 @@
 <a class="sourceLine" id="cb24-7" title="7"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"Time"</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">"Spread,%"</span>)</a></code></pre></div>
 <p><img src="the_Vignettes_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 </div>
-<div id="us-federal-reserve-total-assets" class="section level3">
+<div id="example-three-us-federal-reserve-weekly-asset-purchase" class="section level3">
 <h3 class="hasAnchor">
-<a href="#us-federal-reserve-total-assets" class="anchor"></a>2.3 US federal reserve total assets:</h3>
+<a href="#example-three-us-federal-reserve-weekly-asset-purchase" class="anchor"></a>2.3 Example three: US federal reserve weekly asset purchase</h3>
 <p>We plot the weekly asset purchase by US federal reserve:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>date)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb25-2" title="2"><span class="st">  </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">y =</span> weekly_fed_purchase))<span class="op">+</span></a>
@@ -213,8 +213,8 @@
 </div>
 <div id="advanced-search-for-historical-data-seasonal-adjustments" class="section level2">
 <h2 class="hasAnchor">
-<a href="#advanced-search-for-historical-data-seasonal-adjustments" class="anchor"></a>3. Advanced search for historical data: Seasonal adjustments</h2>
-<p>When using get_fedeconseries for downloading real-time data sets, there will be an additional column for the respective vintage dates.</p>
+<a href="#advanced-search-for-historical-data-seasonal-adjustments" class="anchor"></a>3. Advanced search for historical data: seasonal adjustments</h2>
+<p>When we use get_fedeconseries to download historical data sets, there will be an additional column for the respective vintage dates.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">df_vintages &lt;-</a>
 <a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw"><a href="../reference/get_fedeconseries.html">get_fedeconseries</a></span>(<span class="st">"UNRATE"</span>, <span class="st">"unemploymentRate"</span>,</a>
 <a class="sourceLine" id="cb26-3" title="3">                    <span class="dt">obs_start =</span> <span class="st">"2000-01-01"</span>,</a>
@@ -227,7 +227,7 @@
 ## 5059 2020-09-01      2020-12-04              7.9
 ## 5060 2020-10-01      2020-12-04              6.9
 ## 5061 2020-11-01      2020-12-04              6.7</code></pre>
-<p>Because of its output being a tidy data frame, it is easy to visualise revisions by</p>
+<p>Because the output is a tidy data frame, it is easy to visualise:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb28-2" title="2"></a>
 <a class="sourceLine" id="cb28-3" title="3"><span class="kw">ggplot</span>(df_vintages) <span class="op">+</span></a>
@@ -247,10 +247,9 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#installation">1. Installation</a></li>
-      <li><a href="#functions-overview">1.1functions overview:</a></li>
-      <li><a href="#how-to-use-the-functions">2. How to use the functions:</a></li>
-      <li><a href="#advanced-search-for-historical-data-seasonal-adjustments">3. Advanced search for historical data: Seasonal adjustments</a></li>
+<li><a href="#package-installation">1. Package Installation</a></li>
+      <li><a href="#examples-of-how-to-use-the-functions">2. Examples of how to use the functions:</a></li>
+      <li><a href="#advanced-search-for-historical-data-seasonal-adjustments">3. Advanced search for historical data: seasonal adjustments</a></li>
       </ul>
 </div>
       </div>

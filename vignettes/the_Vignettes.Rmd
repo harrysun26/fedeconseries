@@ -1,5 +1,5 @@
 ---
-title: "A concrete example of how to use the library fedeconseries"
+title: "Examples of how to use US federal reserve API -- fedeconseries"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette 
 vignette: >
@@ -8,11 +8,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-An easy way to download clean ALFRED data (US Frderal Reserve Economic Series data--St.Louis Fed).
+The fedeconseries, an R API package, provides an easy way to obtain real-time and archival data from the U.S. Frderal Reserve.  Real-time series means there is no adjustment on raw data; archival series means there are adjustments on raw data (For instance on February 2, 1990, the US Bureau of Labor Statistics reported the US unemployment rate for the month of January, 1990 as 5.3 percent. Over 6 years later on March 8, 1996, the US unemployment rate for the same month January, 1990 was revised to 5.4 percent).  The FRED official website \url{https://fred.stlouisfed.org/} tracks 767,000 US and international time series from 102 sources.  
 
-## 1. Installation
+## 1. Package Installation
 
-You may install the last stable release , the latest development version from github.
+The latest development version can be installed from github.
 
 
 ```{r}
@@ -22,30 +22,29 @@ You may install the last stable release , the latest development version from gi
 
 ```
 
-## 1.1functions overview: 
-
+### 1.1functions overview: 
 
 * 
 `search_fedeconseries("unemployment", search_type = 'full_text',realtime_start = NULL, realtime_end = NULL)`
 
-  This function returns the unique identifier(economic variable in database) used in following functions `get_econ_series` and `get_fedeconseries`. For example, we pass keyword "unemployment" into function. 
+  This function retrives the unique identifier(economic variable in database) used in the following functions `get_econ_series` and `get_fedeconseries`. For example, we pass keyword "unemployment" into function. If there are multiple keywords, use "+" inside quotes without spaces, for example, "industrial+production+index". 
 
 *
   `get_econ_series("INDPRO", "indpro", observation_start = "2009-03-01", observation_end = "2009-03-01")`
 
-  This function returns real value(raw data) of economic series.  No adjustments. Here we pass "INDPRO" as keyword and "indpro" as a rename, with observation start and end date. 
+  This function retrieves real-time value(raw data) of economic series without adjustments. Here we pass "INDPRO" as keyword and "indpro" as a rename, with observation start and end date. 
 
 *                   
 `get_fedeconseries("UNRATE", "unemployment",observation_start = "2013-03-01", observation_end = "2013-03-30",realtime_start = "2015-02-02", realtime_end = "2015-02-02")`
                   
-  This function looks up unemployment data of US, with varying available date adjustment. Here we pass the keyword "UNRATE", rename as "unemployment", with observation start and end date, and research (real) start and end date. 
+  This function looks up unemployment data of the US, with varying available date adjustment. Here we pass the keyword "UNRATE", rename as "unemployment", with observation start and end date, and research (real) start and end date. 
 
 
-## 2. How to use the functions:
+## 2. Examples of how to use the functions:
 
-### 2.1 US umemployment rate: 
+### 2.1 Example one: find identifier for "US umemployment rate"
 
-First, when use this package to fetch data from \url{https://alfred.stlouisfed.org}, you need to know the `s_id` which is the data identifier(anmely the economic variable name in website database). If you don't know the series_id, you could try `search_fedeconseries` to search some keywords. Say you want to know the "unemployment", but you do not the series identifier. Here is whay you could do:
+First, when using this package to fetch data from \url{https://alfred.stlouisfed.org}, you need to know the `s_id` which is the data identifier(anmely the economic variable name in website database). If you don't know the series_id, you could try `search_fedeconseries` to search some keywords. Say you want to know the "unemployment", but you do not the series identifier. Here is a way to solve the problem:
 
 ```{r}
 library(fedeconseries)
@@ -54,7 +53,7 @@ df <- search_fedeconseries("unemployment")
 head(df[1:5,1:4])
 ```
 
-From the above dataframe, you could check the title, the frequency, the popularity, the notes, etc., then you could easily choose which one is what you need. Let's do with the first id from the first column: "UNRATE".
+From the above dataframe, you could check the title, the frequency, the popularity, the notes, etc., then you could easily choose which one is needed. Let's do with the first id from the first column: "UNRATE".
 
 To download the data, use function :
 
@@ -69,7 +68,7 @@ The output is a data frame
 tail(df)
 ```
 
-This can be readily used, i.e. for plotting
+This can be readily used for plotting,
 
 ```{r, fig.show = "hold"}
 library(ggplot2)
@@ -77,12 +76,14 @@ ggplot(df) +
   geom_line(aes(x = date, y = unemployment))
 ```
 
-### 2.2 Corporate Bond credit spread plot:
+### 2.2 Example two: Corporate Bond credit spread
 
-We searched the data identifiers for many corporate bond effective yields(provided by Bank of America Merrill Lynch) from alfred, retrieve the series, and process the dataframe a little bit to plot:
+We searched the data identifiers for several corporate bond effective yields(provided by Bank of America Merrill Lynch) from alfred, retrieve the series, and process the dataframe a little bit for plotting:
 
 ```{r}
 library(tidyverse)
+
+
 aaa <- get_econ_series("BAMLC0A1CAAAEY", "aaa", observation_start = "2002-12-18", observation_end = "2020-12-15")
 bbb <- get_econ_series("BAMLC0A4CBBBEY", "bbb", observation_start = "2002-12-18", observation_end = "2020-12-15")
 bb <- get_econ_series("BAMLH0A1HYBBEY", "bb", observation_start = "2002-12-18", observation_end = "2020-12-15")
@@ -103,7 +104,7 @@ ggplot(df, aes(x=date)) +
   xlab("Time") + ylab("Spread,%")
 ```
 
-### 2.3 US federal reserve total assets:
+### 2.3 Example three: US federal reserve weekly asset purchase
 
 We plot the weekly asset purchase by US federal reserve:
 ```{r}
@@ -113,9 +114,9 @@ ggplot(df, aes(x=date)) +
   xlab("Time") + ylab("Weekly puschase, in $USD millions")
 ```
 
-## 3. Advanced search for historical data: Seasonal adjustments
+## 3. Advanced search for historical data: seasonal adjustments
 
-When using get_fedeconseries for downloading real-time data sets, there will be an additional column for the respective vintage dates.
+When we use get_fedeconseries to download historical data sets, there will be an additional column for the respective vintage dates.
 
 ```{r}
 df_vintages <-
@@ -125,7 +126,7 @@ df_vintages <-
 tail(df_vintages)
 ```
 
-Because of its output being a tidy data frame, it is easy to visualise revisions by
+Because the output is a tidy data frame, it is easy to visualise: 
 
 ```{r, fig.show = "hold", fig.width = 6}
 library(ggplot2)
