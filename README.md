@@ -15,12 +15,12 @@ coverage](https://codecov.io/gh/harrysun26/fedeconseries/branch/master/graph/bad
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
-The goal of fedeconseries is to obtain US federal reserve(St. Louis Fed)
-economic data. Reserach use only.
+The R package, fedeconseries, is used to obtain US federal reserve
+(St. Louis Fed) economic data. Reserach use only.
 
 ## Installation
 
-You can install the released version of fedeconseries from github
+You can install the released version of fedeconseries from CRAN/github
 with:
 
 ``` r
@@ -69,6 +69,7 @@ Terms of Use, see
 
   - 02.02.2020: Version 0.1.0
   - 02.08.2020: Version 0.1.1
+  - 12.17.2020: Version 1.1.0
 
 ## Example
 

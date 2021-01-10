@@ -1,5 +1,5 @@
 ---
-title: "Examples of How to Use the US Federal Reserve API -- fedeconseries"
+title: "Examples of How to Use the fedeconseries"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette 
 vignette: >
@@ -8,7 +8,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-The fedeconseries, an R API package developed by Harry, provides an easy way to obtain real-time and archival data from the U.S. Frderal Reserve.  Real-time series means there is no adjustment on raw data; archival series means there are adjustments on raw data (For instance on February 2, 1990, the US Bureau of Labor Statistics reported the US unemployment rate for the month of January, 1990 as 5.3 percent. Over 6 years later on March 8, 1996, the US unemployment rate for the same month January, 1990 was revised to 5.4 percent).  The FRED official website \url{https://fred.stlouisfed.org/} tracks 767,000 US and international time series from 102 sources.  
+The fedeconseries, an R API package developed by Harry Sun and Weiwei Liu, provides an easy way to obtain real-time and archival data series from the U.S. Federal Reserve.  Real-time series means there is no adjustment on raw data; archival series means there are adjustments on raw data (for instance on February 2, 1990, the US Bureau of Labor Statistics reported the US unemployment rate for the month of January, 1990 as 5.3 percent. Over 6 years later on March 8, 1996, the US unemployment rate for the same month January, 1990 was revised to 5.4 percent).  The FRED official website \url{https://fred.stlouisfed.org/} tracks 767,000 US and international time series from 102 sources.  
 
 ## 1. Package Installation
 
@@ -27,7 +27,7 @@ The latest development version can be installed from github.
 * 
 `search_fedeconseries("unemployment", search_type = 'full_text',realtime_start = NULL, realtime_end = NULL)`
 
-  This function retrives the unique identifier(economic variable in database) used in the following functions `get_econ_series` and `get_fedeconseries`. For example, we pass keyword "unemployment" into function. If there are multiple keywords, use "+" inside quotes without spaces, for example, "industrial+production+index". 
+  This function returns the unique identifiers(economic variable in database) that can be used in functions `get_econ_series` and `get_fedeconseries` to get data series. For example, keyword "unemployment" can be passed into this function. If there are multiple keywords, use "+" inside quotes without spaces, for example, "industrial+production+index" to search for relevant indices. 
 
 *
   `get_econ_series("INDPRO", "indpro", observation_start = "2009-03-01", observation_end = "2009-03-01")`
@@ -79,9 +79,9 @@ ggplot(df) +
 
 ### 2.2 Example two: corporate bond credit spread
 
-We searched the data identifiers for several corporate bond effective yields(provided by Bank of America Merrill Lynch) from alfred, retrieve the series, and process the dataframe a little bit for plotting:
+We look for the data identifiers for several corporate bond effective yields (provided by Bank of America Merrill Lynch) from alfred, retrieve the series, and process the dataframe for plotting:
 
-```{r,warning=FALSE}
+```{r,warning=FALSE,message=FALSE,}
 library(tidyverse)
 
 aaa <- get_econ_series("BAMLC0A1CAAAEY", "aaa", observation_start = "2002-12-18", observation_end = "2020-12-15")
@@ -101,7 +101,7 @@ ggplot(df, aes(x=date)) +
   geom_line(aes(y = ccc_bb, color="CCC-BB spread")) +
   geom_line(aes(y = bbb_aaa, color="BBB-AAA spread"))+
   ggtitle("Corporate Bond Credit Spread -- BOAML") +
-  xlab("Date") + ylab("Spread,%")
+  xlab("Date") + ylab("Spread,%")+labs(color="Yield Spreads")
 ```
 
 ### 2.3 Example three: US federal reserve weekly asset purchase
